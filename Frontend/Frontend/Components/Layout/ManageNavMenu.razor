@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Frontend.Data
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@inject NavigationManager Navigation
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject SignInManager<ApplicationUser> SignInManager
+
+
+@rendermode InteractiveServer
+
+<nav>
+    <NavLink href="/account/details" class="btn-theme-s" Match="NavLinkMatch.All"><i class="fa-regular fa-cog"><span>Account Details</span></i></NavLink>
+    <button @onclick="HandleSignOut" class="btn-gray"><i class="fa-regular fa-arrow-right-from-bracket"><span>Sing out</span></i></button>
+</nav>
+
+@code {
+    private async Task HandleSignOut()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity!.IsAuthenticated)
+        {
+            await SignInManager.SignOutAsync();
+            Navigation.NavigateTo("/");
+        }
+    }
+
+}

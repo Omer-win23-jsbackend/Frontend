@@ -1,0 +1,54 @@
+﻿<header>
+    <div class="container">
+        <a id="logo" href="">
+            <img src="/images/solid.svg" alt="">
+        </a>
+
+        <div id="menu" class="hide">
+            <nav>
+                <NavLink class="menu-link" href="" Match="NavLinkMatch.All">Overview</NavLink>
+                <NavLink class="menu-link" href="/#features">Features</NavLink>
+
+                <AuthorizeView>
+                    <Authorized>
+                        <a class="menu-link" href="/courses">Courses</a>
+                    </Authorized>
+                </AuthorizeView>
+
+
+                <NavLink class="menu-link" href="/contact">Contact</NavLink>
+            </nav>
+        </div>
+
+        <div class="btn-switch">
+            <label>Light</label>
+            <label class="switch" for="switch-mode">
+                <input type="checkbox" id="switch-mode">
+                <div class="slider round"></div>
+            </label>
+            <label>Dark</label>
+        </div>
+
+
+        <div id="account-buttons" class="hide">
+
+            <AuthorizeView>
+                <Authorized>
+                    <div class="profile">
+                        <div class="profile-img">
+                            <a href="/account/details">
+                                <img src="/images/uploads/profiles/avatar.jpg">
+                            </a>
+                        </div>
+                    </div>
+                </Authorized>
+                <NotAuthorized>
+                    <a class="btn-gray" href="/signin"><i class="fa-regular fa-right-to-bracket"></i><span>Sign in</span></a>
+                    <a class="btn-theme" href="/signup"><i class="fa-regular fa-user"></i><span>Sign up</span></a>
+                </NotAuthorized>
+            </AuthorizeView>
+            
+        </div>
+    </div>
+
+</header>
