@@ -58,7 +58,7 @@ else
 			fileContent.Headers.ContentType = new MediaTypeHeaderValue(selectedFile.ContentType);
 			content.Add(fileContent, "file", selectedFile.Name);
 
-			var result = await Http.PostAsync("http://fileprovider-win23jsbackend-omarea.azurewebsite.net/api/upload", content);
+			var result = await Http.PostAsync(Environment.GetEnvironmentVariable("FileProvider_Upload"), content);
 			if (result.IsSuccessStatusCode)
 			{
 				await LoadUserDataAsync();
